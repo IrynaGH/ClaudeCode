@@ -30,20 +30,13 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Project Setup
-        run: |
-          npm run setup
-          npm run dev:daemon
-
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           custom_instructions: |
-            The project is already set up with all dependencies installed.
-            The server is already running at localhost:3000. Logs from it are being written to logs.txt.
-            If needed, use the mcp__playwright set of tools to launch a browser and interact with the app.
+            This is a Next.js app (React Component Generator). The stack is Next.js 15, React 19, TypeScript, Prisma + SQLite, Tailwind CSS, Vercel AI SDK.
           mcp_config: |
             {
               "mcpServers": {
